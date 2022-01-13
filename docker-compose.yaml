@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.0
+    environment:
+    - POSTGRES_PASSWORD=postgres
+    ports:
+    - "5432:5432"
+  api:
+    build: ./
+    environment:
+      - SECRET_KEY_BASE=fgGe5rbhTl12pDI4McDFKhKENtOeU6bmufpJ04aTYSjAgNk4UBkgaDd1oXNdcnh1
+      - DATABASE_URL=ecto://postgres:postgres@docker.for.mac.localhost/postgres
+    ports:
+    - "4000:4000"
